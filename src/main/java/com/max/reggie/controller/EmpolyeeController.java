@@ -20,7 +20,6 @@ import java.time.LocalDateTime;
 @RequestMapping("/employee")//请求路径
 public class EmpolyeeController {
         @Autowired
-
         private EmployeeService employeeService;
         /*
            员工登陆功能
@@ -115,6 +114,7 @@ public class EmpolyeeController {
                 }
                 //添加排序条件
                 queryWrapper.orderByDesc(Employee::getUpdateTime);
+
                 //执行查询
                 employeeService.page(pageInfo,queryWrapper);
                 return R.success(pageInfo);
@@ -128,7 +128,7 @@ public class EmpolyeeController {
          * @data:   2022/9/27
          */
         @PutMapping
-        public R<String> update(HttpServletRequest request,@RequestBody Employee employee){
+        public R<String> update(@RequestBody Employee employee){
                 log.info(employee.toString());
 //                Long empId = (Long)request.getSession().getAttribute("employee");
 //                employee.setUpdateUser(empId);
